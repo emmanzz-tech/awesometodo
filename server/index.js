@@ -6,11 +6,9 @@ const path = require('path');
 const app = express();
 app.use(express.json());
 
-// The '..' tells it to go up one level from the 'server' folder, then into 'client/dist'
-app.use(express.static(path.join(__dirname, '../client/dist')));
-
+app.use(express.static(path.join(__dirname, 'dist')));
 app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, '../client/dist/index.html'));
+  res.sendFile(path.join(__dirname, 'dist/index.html'));
 });
 
 const router = require("./routes");
@@ -24,5 +22,4 @@ const startServer = async () => {
         console.log(`Server is listening on http://localhost:${port}`);
     });
 };
-
 startServer();
